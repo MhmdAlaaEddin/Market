@@ -1,0 +1,21 @@
+<div class="body container">
+
+    <h2 class="text-center my-1"> login</h2>
+    <form action="" #f="ngForm" (ngSubmit)="login(f)">
+
+
+        <input ngModel type="email" #email="ngModel" placeholder="Email " name="email" id=" " class="form-control my-2 " required email>
+        <div class="alert alert-danger " *ngIf="email.touched && email.errors?.required">Email is Required</div>
+        <div class="alert alert-danger " *ngIf="email.touched && email.errors?.email">Enter Email Corect</div>
+
+        <input ngModel type="password" #password="ngModel" placeholder="Password " name="password" id=" " class="form-control my-2 " required minlength="6 ">
+        <div class="alert alert-danger " *ngIf="password.touched && password.errors?.required">Password is Required</div>
+        <div class="alert alert-danger " *ngIf="password.touched && password.errors?.minlength">You Should Enter More Than 6 Letters</div>
+
+
+        <button class="btn btn-primary my-2 " [disabled]="f.invalid">Login</button>
+
+    </form>
+    <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
+
+</div>

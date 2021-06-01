@@ -1,0 +1,28 @@
+<div class="body container">
+
+    <h2 class="text-center my-1"> Sign Up</h2>
+    <form action="" #f="ngForm" (ngSubmit)="signup(f)">
+
+        <input ngModel type="text" #name="ngModel" placeholder=" Your Name " name="name" id=" " class="form-control my-2 " required>
+        <div class="alert alert-danger " *ngIf="name.invalid && name.touched">Name is Required</div>
+
+        <input ngModel type="email" #email="ngModel" placeholder="Email " name="email" id=" " class="form-control my-2 " required email>
+        <div class="alert alert-danger " *ngIf="email.touched && email.errors?.required">Email is Required</div>
+        <div class="alert alert-danger " *ngIf="email.touched && email.errors?.email">Enter Email Corect</div>
+
+        <input ngModel type="password" #password="ngModel" placeholder="Password" name="password" id=" " class="form-control my-2 " required minlength="6 ">
+        <div class="alert alert-danger " *ngIf="password.touched && password.errors?.required">Password is Required</div>
+        <div class="alert alert-danger " *ngIf="password.touched && password.errors?.minlength">You Should Enter More Than 6 Letters</div>
+
+        <input ngModel type="password" #cPassword="ngModel" placeholder="Confirm Password " name="cPassword" id=" " class="form-control my-2 " required>
+        <div class="alert alert-danger " *ngIf="cPassword.invalid && cPassword.touched">Confirm Password is Required</div>
+        <div class="alert alert-danger " *ngIf="password.value!==cPassword.value">Confirm Password Not Eqal Password</div>
+
+        <input ngModel type="text" #address="ngModel" placeholder="Address " name="address" id=" " class="form-control" required>
+        <div class="alert alert-danger " *ngIf="address.invalid && address.touched">Address is Required</div>
+
+        <button class="btn btn-primary my-2 " [disabled]="f.invalid || password.value!==cPassword.value ">Create Account</button>
+
+    </form>
+    <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
+</div>

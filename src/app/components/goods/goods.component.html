@@ -1,0 +1,9 @@
+<div>
+    <h2 class="text-center"> Admin Page</h2>
+    <form #f="ngForm" (ngSubmit)=addNewGood(f)>
+        <input ngModel type="text" name="name" id="" class="form-control" placeholder="Name" required>
+        <input ngModel type="number" name="price" id="" class="form-control" placeholder="Price">
+        <input #image ngModel type="file" name="image" id="" required>
+        <input type="submit" value="Add" class="btn btn-primary" [required]="f.invalid">
+    </form>
+</div>
